@@ -101,7 +101,8 @@
                   <td class="text-center">{{ it.code }}</td>
                   <td class="text-center">{{ it.name }}</td>
                   <td class="text-center">
-                    {{ useBasicData().types[it.type].name }}
+                    {{ useBasicData().types[it.type-1].name }}
+                    
                   </td>
                   <td class="text-center">{{ it.center.name_th }}</td>
                   <td class="text-center">{{ it.company_name }}</td>
