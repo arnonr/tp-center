@@ -285,7 +285,13 @@ export default defineComponent({
     };
 
     const fetchCenter = () => {
-      ApiService.get("center")
+      let params = {};
+
+      if (userData.group_id != 1) {
+        params["id"] = userData.center_id;
+      }
+
+      ApiService.query("center", { params: params })
         .then(({ data }) => {
           if (data.msg != "success") {
             throw new Error("ERROR");
@@ -309,6 +315,10 @@ export default defineComponent({
           ? search.value.center_id.id
           : undefined,
       };
+
+      if (userData.group_id != 1) {
+        params["center_id"] = userData.center_id;
+      }
 
       ApiService.query("project", { params: params })
         .then(({ data }) => {
@@ -340,6 +350,8 @@ export default defineComponent({
       fetchItems();
     });
 
+    const userData = JSON.parse(localStorage.getItem("userData"));
+
     return {
       tableHeader,
       totalPage,
@@ -350,7 +362,8 @@ export default defineComponent({
       currentPage,
       selectOptions,
       router,
-      dayjs
+      dayjs,
+      userData,
     };
   },
 });

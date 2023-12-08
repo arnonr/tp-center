@@ -19,7 +19,7 @@
           <router-link to="/">
             <img
               alt="Logo"
-              :src="getAssetPath('media/logos/custom-1.png')"
+              :src="getAssetPath('media/logos/logo-tp.png')"
               class="h-70px"
             />
           </router-link>

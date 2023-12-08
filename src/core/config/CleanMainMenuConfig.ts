@@ -26,19 +26,19 @@ const MainMenuConfig: Array<MenuItem> = [
       {
         heading: "โครงการ",
         route: "/project",
-        keenthemesIcon: "element-11",
+        keenthemesIcon: "book",
         bootstrapIcon: "bi-app-indicator",
       },
       {
         heading: "ออกเลขงานทดสอบ/ตรวจสอบ",
         route: "/inspection",
-        keenthemesIcon: "element-11",
+        keenthemesIcon: "file",
         bootstrapIcon: "bi-app-indicator",
       },
       {
         heading: "จัดการผู้ใช้งาน",
         route: "/user",
-        keenthemesIcon: "element-11",
+        keenthemesIcon: "user",
         bootstrapIcon: "bi-app-indicator",
       },
     ],

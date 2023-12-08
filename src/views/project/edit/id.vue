@@ -65,7 +65,7 @@
 
                 <VueDatePicker
                   v-if="c.type == 'date'"
-                  v-model="item[c.columnName]"
+                  v-model="item[c['columnName']]"
                   :enable-time-picker="false"
                   locale="th"
                   auto-apply
@@ -205,7 +205,13 @@ export default defineComponent({
 
     // Fetch
     const fetchCenter = async () => {
-      await ApiService.get("center")
+      let params = {};
+
+      if (userData.group_id != 1) {
+        params["id"] = userData.center_id;
+      }
+
+      ApiService.query("center", { params: params })
         .then(({ data }) => {
           if (data.msg != "success") {
             throw new Error("ERROR");
@@ -292,6 +298,9 @@ export default defineComponent({
         fetchProject();
       });
     });
+
+    const userData = JSON.parse(localStorage.getItem("userData"));
+
     return {
       item,
       column,
@@ -299,6 +308,7 @@ export default defineComponent({
       selectOptions,
       onValidate,
       format,
+      userData,
     };
   },
 });

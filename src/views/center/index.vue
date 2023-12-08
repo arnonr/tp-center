@@ -73,7 +73,7 @@
         <div class="card-header">
           <h3 class="card-title">รายการ</h3>
 
-          <div class="card-toolbar">
+          <div class="card-toolbar" v-if="userData.group_id == 1">
             <router-link to="/center/add" class="btn btn-sm btn-light-success">
               <i class="fa fa-add"></i> เพิ่มข้อมูล
             </router-link>
@@ -132,7 +132,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
   <!--end::Layout-->
@@ -244,6 +243,10 @@ export default defineComponent({
           ? search.value.campus_id.id
           : undefined,
       };
+      
+      if (userData.group_id != 1) {
+        params['id'] = userData.center_id
+      }
 
       ApiService.query("center", { params: params })
         .then(({ data }) => {
@@ -274,6 +277,7 @@ export default defineComponent({
       fetchItems();
     });
 
+    const userData = JSON.parse(localStorage.getItem("userData"));
     return {
       tableHeader,
       totalPage,
@@ -284,6 +288,7 @@ export default defineComponent({
       currentPage,
       selectOptions,
       router,
+      userData,
     };
   },
 });

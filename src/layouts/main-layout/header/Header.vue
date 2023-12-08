@@ -18,7 +18,7 @@
             v-if="themeMode === 'light' && layout === 'light-header'"
             alt="Logo"
             :src="getAssetPath('media/logos/default.svg')"
-            class="h-20px h-lg-30px app-sidebar-logo-default theme-light-show"
+            class="h-50px h-lg-50px app-sidebar-logo-default theme-light-show"
           />
           <img
             v-if="
@@ -26,8 +26,8 @@
               (themeMode === 'dark' && layout === 'light-header')
             "
             alt="Logo"
-            :src="getAssetPath('media/logos/default-dark.svg')"
-            class="h-20px h-lg-30px app-sidebar-logo-default"
+            :src="getAssetPath('media/logos/logo-tp.png')"
+            class="h-50px h-lg-30px app-sidebar-logo-default"
           />
         </router-link>
       </div>
@@ -51,7 +51,7 @@
           <router-link to="/" class="d-lg-none">
             <img
               alt="Logo"
-              :src="getAssetPath('media/logos/default-small.svg')"
+              :src="getAssetPath('media/logos/logo-tp.png')"
               class="h-30px"
             />
           </router-link>

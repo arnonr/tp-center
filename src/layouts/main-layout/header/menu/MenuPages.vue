@@ -2,7 +2,14 @@
   <template v-for="(item, i) in MainMenuConfig" :key="i">
     <template v-if="!item.heading">
       <template v-for="(menuItem, j) in item.pages" :key="j">
-        <div v-if="menuItem.heading" class="menu-item me-lg-1">
+        <div
+          v-if="
+            menuItem.heading &&
+            (menuItem.heading != 'จัดการผู้ใช้งาน' ||
+              (menuItem.heading == 'จัดการผู้ใช้งาน' && userData.group_id == 1))
+          "
+          class="menu-item me-lg-1"
+        >
           <router-link
             v-if="menuItem.route"
             class="menu-link"
@@ -320,12 +327,15 @@ export default defineComponent({
       }
     };
 
+    const userData = JSON.parse(localStorage.getItem("userData"));
+
     return {
       hasActiveChildren,
       headerMenuIcons,
       MainMenuConfig,
       translate,
       getAssetPath,
+      userData,
     };
   },
 });

@@ -28,7 +28,14 @@
             </div>
           </div>
           <template v-for="(menuItem, j) in item.pages" :key="j">
-            <template v-if="menuItem.heading">
+            <template
+              v-if="
+                menuItem.heading &&
+                (menuItem.heading != 'จัดการผู้ใช้งาน' ||
+                  (menuItem.heading == 'จัดการผู้ใช้งาน' &&
+                    userData.group_id == 1))
+              "
+            >
               <div class="menu-item">
                 <router-link
                   v-if="menuItem.route"
@@ -149,7 +156,6 @@
             </div>
           </template>
         </template>
-
       </div>
       <!--end::Menu-->
     </div>
@@ -193,12 +199,14 @@ export default defineComponent({
       return route.path.indexOf(match) !== -1;
     };
 
+    const userData = JSON.parse(localStorage.getItem("userData"));
     return {
       hasActiveChildren,
       MainMenuConfig,
       sidebarMenuIcons,
       translate,
       getAssetPath,
+      userData
     };
   },
 });
