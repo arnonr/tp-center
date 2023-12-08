@@ -17,6 +17,7 @@ export default defineConfig({
   //   base: "/metronic8/vue/demo1/",
 
   base: "/tp-center/",
+//   base: "/",
   build: {
     chunkSizeWarningLimit: 3000,
   },

@@ -1,4 +1,17 @@
 export default () => {
+  const types = [
+    {
+      id: 1,
+      value: 1,
+      name: "Report",
+    },
+    {
+      id: 2,
+      value: 2,
+      name: "Certificate",
+    },
+  ];
+
   const publishes = [
     {
       id: 0,
@@ -47,5 +60,6 @@ export default () => {
     publishes,
     actives,
     user_statuses,
+    types
   };
 };

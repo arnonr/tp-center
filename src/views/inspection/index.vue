@@ -100,7 +100,9 @@
                 <tr v-for="(it, idx) in items" :key="idx">
                   <td class="text-center">{{ it.code }}</td>
                   <td class="text-center">{{ it.name }}</td>
-                  <td class="text-center">{{ it.type }}</td>
+                  <td class="text-center">
+                    {{ useBasicData().types[it.type].name }}
+                  </td>
                   <td class="text-center">{{ it.center.name_th }}</td>
                   <td class="text-center">{{ it.company_name }}</td>
                   <td class="text-center">
@@ -304,6 +306,7 @@ import Swal from "sweetalert2";
 import useToast from "@/composables/useToast";
 import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
+import useBasicData from "@/composables/useBasicData";
 
 export default defineComponent({
   name: "project",
@@ -565,7 +568,8 @@ export default defineComponent({
       fetchItems();
     });
 
-    const userData = JSON.parse(localStorage.getItem("userData") || '{}');
+    const userData = JSON.parse(localStorage.getItem("userData") || "{}");
+
     return {
       tableHeader,
       totalPage,
@@ -584,6 +588,7 @@ export default defineComponent({
       format,
       file,
       userData,
+      useBasicData,
     };
   },
 });
