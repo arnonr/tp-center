@@ -64,7 +64,26 @@ class ApiService {
    * @returns Promise<AxiosResponse>
    */
   public static post(resource: string, params: any): Promise<AxiosResponse> {
-    return ApiService.vueInstance.axios.post(`${resource}`, params);
+    return ApiService.vueInstance.axios.post(`${resource}`, params, {});
+  }
+
+  public static postFormData(
+    resource: string,
+    params: any
+  ): Promise<AxiosResponse> {
+    var form_data = new FormData();
+    for (var key in params) {
+      form_data.append(key, params[key]);
+      if (params[key] == null) {
+        params[key] = "";
+      }
+    }
+
+    return ApiService.vueInstance.axios.post(`${resource}`, params, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   }
 
   /**
@@ -90,6 +109,26 @@ class ApiService {
    */
   public static put(resource: string, params: any): Promise<AxiosResponse> {
     return ApiService.vueInstance.axios.put(`${resource}`, params);
+  }
+
+  public static putFormData(
+    resource: string,
+    params: any
+  ): Promise<AxiosResponse> {
+    // var form_data = new FormData();
+    // for (var key in params) {
+    //   form_data.append(key, params[key]);
+    //   if (params[key] == null) {
+    //     params[key] = "";
+    //   }
+    // }
+    // form_data.append("_method", "PUT");
+
+    return ApiService.vueInstance.axios.post(`${resource}`, params, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   }
 
   /**

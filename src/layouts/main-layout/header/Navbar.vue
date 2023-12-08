@@ -87,7 +87,7 @@
         data-kt-menu-placement="bottom-end"
       >
         <img
-          :src="getAssetPath('media/avatars/300-3.jpg')"
+          :src="getAssetPath('media/avatars/300-31.png')"
           class="rounded-3"
           alt="user"
         />

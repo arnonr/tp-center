@@ -14,30 +14,20 @@
         <!--begin::Title-->
         <h1 class="text-dark mb-3">Sign In</h1>
         <!--end::Title-->
-
-        <!--begin::Link-->
-        <div class="text-gray-400 fw-semobold fs-4">
-          New Here?
-
-          <router-link to="/sign-up" class="link-primary fw-bold">
-            Create an Account
-          </router-link>
-        </div>
-        <!--end::Link-->
       </div>
       <!--begin::Heading-->
 
       <div class="mb-10 bg-light-info p-8 rounded">
         <div class="text-info">
-          Use account <strong>admin@demo.com</strong> and password
-          <strong>demo</strong> to continue.
+          ระบบบริหารจัดการศูนย์วิจัยฯ ภายใต้อุทยานเทคโนโลยี มจพ.
+          
         </div>
       </div>
 
       <!--begin::Input group-->
       <div class="fv-row mb-10">
         <!--begin::Label-->
-        <label class="form-label fs-6 fw-bold text-dark">Email</label>
+        <label class="form-label fs-6 fw-bold text-dark">ICIT Account</label>
         <!--end::Label-->
 
         <!--begin::Input-->
@@ -45,13 +35,13 @@
           tabindex="1"
           class="form-control form-control-lg form-control-solid"
           type="text"
-          name="email"
+          name="username"
           autocomplete="off"
         />
         <!--end::Input-->
         <div class="fv-plugins-message-container">
           <div class="fv-help-block">
-            <ErrorMessage name="email" />
+            <ErrorMessage name="username" />
           </div>
         </div>
       </div>
@@ -66,9 +56,15 @@
           <!--end::Label-->
 
           <!--begin::Link-->
-          <router-link to="/password-reset" class="link-primary fs-6 fw-bold">
-            Forgot Password ?
-          </router-link>
+          <!-- <router-link to="/password-reset" class="link-primary fs-6 fw-bold">
+          </router-link> -->
+          <a
+            href="https://account.kmutnb.ac.th/web/recovery/password"
+            target="_blank"
+            class="link-primary fs-6 fw-bold"
+          >
+            Forgot Password ?</a
+          >
           <!--end::Link-->
         </div>
         <!--end::Wrapper-->
@@ -110,49 +106,7 @@
           </span>
         </button>
         <!--end::Submit button-->
-
-        <!--begin::Separator-->
-        <div class="text-center text-muted text-uppercase fw-bold mb-5">or</div>
-        <!--end::Separator-->
-
-        <!--begin::Google link-->
-        <a
-          href="#"
-          class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5"
-        >
-          <img
-            alt="Logo"
-            :src="getAssetPath('media/svg/brand-logos/google-icon.svg')"
-            class="h-20px me-3"
-          />
-          Continue with Google
-        </a>
-        <!--end::Google link-->
-
-        <!--begin::Google link-->
-        <a
-          href="#"
-          class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5"
-        >
-          <img
-            alt="Logo"
-            :src="getAssetPath('media/svg/brand-logos/facebook-4.svg')"
-            class="h-20px me-3"
-          />
-          Continue with Facebook
-        </a>
-        <!--end::Google link-->
-
-        <!--begin::Google link-->
-        <a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100">
-          <img
-            alt="Logo"
-            :src="getAssetPath('media/svg/brand-logos/apple-black.svg')"
-            class="h-20px me-3"
-          />
-          Continue with Apple
-        </a>
-        <!--end::Google link-->
+        <span>พบปัญหาการเข้าใช้งานระบบติดต่อ 2272</span>
       </div>
       <!--end::Actions-->
     </VForm>
@@ -221,6 +175,7 @@ export default defineComponent({
           router.push({ name: "dashboard" });
         });
       } else {
+        console.log(error);
         Swal.fire({
           text: error[0] as string,
           icon: "error",
@@ -238,7 +193,7 @@ export default defineComponent({
       //Deactivate indicator
       submitButton.value?.removeAttribute("data-kt-indicator");
       // eslint-disable-next-line
-        submitButton.value!.disabled = false;
+      submitButton.value!.disabled = false;
     };
 
     return {

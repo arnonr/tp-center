@@ -9,21 +9,22 @@
       <div class="menu-content d-flex align-items-center px-3">
         <!--begin::Avatar-->
         <div class="symbol symbol-50px me-5">
-          <img alt="Logo" :src="getAssetPath('media/avatars/300-3.jpg')" />
+          <img alt="Logo" :src="getAssetPath('media/avatars/300-31.png')" />
         </div>
         <!--end::Avatar-->
 
         <!--begin::Username-->
         <div class="d-flex flex-column">
           <div class="fw-bold d-flex align-items-center fs-5">
-            Max Smith
-            <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2"
+            {{ userData.name }}
+
+            <!-- <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2"
               >Pro</span
-            >
+            > -->
           </div>
-          <a href="#" class="fw-semobold text-muted text-hover-primary fs-7"
+          <!-- <a href="#" class="fw-semobold text-muted text-hover-primary fs-7"
             >max@kt.com</a
-          >
+          > -->
         </div>
         <!--end::Username-->
       </div>
@@ -35,11 +36,11 @@
     <!--end::Menu separator-->
 
     <!--begin::Menu item-->
-    <div class="menu-item px-5">
+    <!-- <div class="menu-item px-5">
       <router-link to="/pages/profile/overview" class="menu-link px-5">
         My Profile
       </router-link>
-    </div>
+    </div> -->
     <!--end::Menu item-->
 
     <!--begin::Menu item-->
@@ -74,7 +75,7 @@
       data-kt-menu-placement="left-start"
       data-kt-menu-flip="center, top"
     > -->
-      <!-- <router-link to="/pages/profile/overview" class="menu-link px-5">
+    <!-- <router-link to="/pages/profile/overview" class="menu-link px-5">
         <span class="menu-title position-relative">
           Language
           <span
@@ -90,10 +91,10 @@
         </span>
       </router-link> -->
 
-      <!--begin::Menu sub-->
-      <!-- <div class="menu-sub menu-sub-dropdown w-175px py-4"> -->
-        <!--begin::Menu item-->
-        <!-- <div class="menu-item px-3">
+    <!--begin::Menu sub-->
+    <!-- <div class="menu-sub menu-sub-dropdown w-175px py-4"> -->
+    <!--begin::Menu item-->
+    <!-- <div class="menu-item px-3">
           <a
             @click="setLang('en')"
             href="#"
@@ -110,10 +111,10 @@
             English
           </a>
         </div> -->
-        <!--end::Menu item-->
+    <!--end::Menu item-->
 
-        <!--begin::Menu item-->
-        <!-- <div class="menu-item px-3">
+    <!--begin::Menu item-->
+    <!-- <div class="menu-item px-3">
           <a
             @click="setLang('es')"
             href="#"
@@ -130,10 +131,10 @@
             Spanish
           </a>
         </div> -->
-        <!--end::Menu item-->
+    <!--end::Menu item-->
 
-        <!--begin::Menu item-->
-        <!-- <div class="menu-item px-3">
+    <!--begin::Menu item-->
+    <!-- <div class="menu-item px-3">
           <a
             @click="setLang('de')"
             href="#"
@@ -150,10 +151,10 @@
             German
           </a>
         </div> -->
-        <!--end::Menu item-->
+    <!--end::Menu item-->
 
-        <!--begin::Menu item-->
-        <!-- <div class="menu-item px-3">
+    <!--begin::Menu item-->
+    <!-- <div class="menu-item px-3">
           <a
             @click="setLang('ja')"
             href="#"
@@ -170,10 +171,10 @@
             Japanese
           </a>
         </div> -->
-        <!--end::Menu item-->
+    <!--end::Menu item-->
 
-        <!--begin::Menu item-->
-        <!-- <div class="menu-item px-3">
+    <!--begin::Menu item-->
+    <!-- <div class="menu-item px-3">
           <a
             @click="setLang('fr')"
             href="#"
@@ -190,9 +191,9 @@
             French
           </a>
         </div> -->
-        <!--end::Menu item-->
-      <!-- </div> -->
-      <!--end::Menu sub-->
+    <!--end::Menu item-->
+    <!-- </div> -->
+    <!--end::Menu sub-->
     <!-- </div> -->
     <!--end::Menu item-->
 
@@ -273,6 +274,8 @@ export default defineComponent({
       return countries[i18n.locale.value as keyof typeof countries];
     });
 
+    const userData = JSON.parse(localStorage.getItem("userData"));
+
     return {
       signOut,
       setLang,
@@ -280,6 +283,7 @@ export default defineComponent({
       currentLangugeLocale,
       countries,
       getAssetPath,
+      userData,
     };
   },
 });

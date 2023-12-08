@@ -87,10 +87,7 @@
                         </td>
                         <td class="text-center">{{ it.position }}</td>
                         <td class="text-center">
-                          <router-link
-                            to="/center/1"
-                            class="btn btn-sm btn-primary btn-icon"
-                          >
+                          <button class="btn btn-sm btn-primary btn-icon">
                             <i
                               class="fa fa-edit"
                               @click="
@@ -100,7 +97,7 @@
                                 }
                               "
                             ></i>
-                          </router-link>
+                          </button>
                         </td>
                       </tr>
                     </tbody>

@@ -43,16 +43,41 @@
                   :name="c.columnName"
                 />
 
+                <input
+                  v-if="c.type == 'number'"
+                  type="number"
+                  class="form-control"
+                  :placeholder="c.columnLabel"
+                  v-model="item[c.columnName]"
+                  :name="c.columnName"
+                />
+
                 <v-select
                   v-if="c.type == 'select'"
-                  label="name_th"
+                  :label="c.selectLabel"
                   :name="c.columnName"
-                  placeholder="วิทยาเขต"
-                  :options="selectOptions.campus"
+                  :placeholder="c.columnLabel"
+                  :options="selectOptions[c.select]"
                   v-model="item[c.columnName]"
                   class="form-control"
                   :clearable="true"
                 ></v-select>
+
+                <VueDatePicker
+                  v-if="c.type == 'date'"
+                  v-model="item[c.columnName]"
+                  :enable-time-picker="false"
+                  locale="th"
+                  auto-apply
+                  :format="format"
+                >
+                  <template #year-overlay-value="{ text }">
+                    {{ parseInt(text) + 543 }}
+                  </template>
+                  <template #year="{ value }">
+                    {{ value + 543 }}
+                  </template>
+                </VueDatePicker>
               </div>
             </div>
           </div>
@@ -65,7 +90,6 @@
           >
             Submit
           </button>
-          <!-- <button type="button" class="btn btn-secondary">Cancel</button> -->
         </div>
       </div>
     </div>
@@ -83,88 +107,123 @@ import * as yup from "yup";
 import vSelect from "vue-select";
 import "vue-select/dist/vue-select.css";
 import useToast from "@/composables/useToast";
+import VueDatePicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
+import dayjs from "dayjs";
+import "dayjs/locale/th";
+import buddhistEra from "dayjs/plugin/buddhistEra";
+dayjs.extend(buddhistEra);
 
 export default defineComponent({
-  name: "center-add-id",
+  name: "project-add-id",
   components: {
     vSelect,
+    VueDatePicker
   },
   setup() {
     const router = useRouter();
 
     const column = [
       {
-        columnName: "code",
-        columnLabel: "รหัสศูนย์",
+        columnName: "name",
+        columnLabel: "ชื่อโครงการ",
         type: "text",
       },
       {
-        columnName: "short_name",
-        columnLabel: "ตัวย่อศูนย์",
-        type: "text",
-      },
-      {
-        columnName: "name_th",
-        columnLabel: "ชื่อศูนย์ (TH)",
-        type: "text",
-      },
-      {
-        columnName: "name_en",
-        columnLabel: "ชื่อศูนย์ (EN)",
-        type: "text",
-      },
-      {
-        columnName: "campus_id",
-        columnLabel: "วิทยาเขต",
+        columnName: "center_id",
+        columnLabel: "ศูนย์",
         type: "select",
+        select: "center",
+        selectLabel: "name_th",
       },
       {
-        columnName: "head_of_center",
-        columnLabel: "หัวหน้าศูนย์",
+        columnName: "project_type_id",
+        columnLabel: "ประเภทโครงการ",
+        type: "select",
+        select: "project_type",
+        selectLabel: "name",
+      },
+      {
+        columnName: "budget",
+        columnLabel: "งบประมาณ",
         type: "text",
+      },
+      {
+        columnName: "trl",
+        columnLabel: "TRL",
+        type: "number",
+      },
+      {
+        columnName: "in_organization",
+        columnLabel: "หน่วยงาน",
+        type: "text",
+      },
+      {
+        columnName: "ex_organization",
+        columnLabel: "สถานประกอบการ",
+        type: "text",
+      },
+      {
+        columnName: "responsible_staff",
+        columnLabel: "ผู้รับผิดชอบ",
+        type: "text",
+      },
+      {
+        columnName: "project_date",
+        columnLabel: "วันที่",
+        type: "date",
       },
     ];
 
-    interface info {
-      campus_id: any;
-      code: string;
-      short_name: string;
-      name_th: string;
-      name_en: string;
-      head_of_center: string;
-      is_publish: Number;
-    }
+    const format = (date) => {
+      const day = dayjs(date).locale("th").format("DD");
+      const month = dayjs(date).locale("th").format("MMM");
+      const year = date.getFullYear() + 543;
 
-    const item = ref<info>({
-      campus_id: null,
-      code: "",
-      short_name: "",
-      name_th: "",
-      name_en: "",
-      head_of_center: "",
+      return `${day} ${month} ${year}`;
+    };
+
+    const item = ref<any>({
       is_publish: 1,
+      project_date: dayjs(),
     });
     const selectOptions = ref<any>({
-      campus: [],
+      center: [],
+      project_type: [],
     });
 
     let schema = yup.object({
-      campus_id: yup.object().required(),
-      code: yup.string().required(),
-      short_name: yup.string().required(),
-      name_th: yup.string().required(),
-      name_en: yup.string().nullable(),
-      head_of_center: yup.string().nullable(),
+      center_id: yup.object().required(),
+      project_type_id: yup.object().required(),
+      name: yup.string().required(),
+      budget: yup.string().required(),
+      trl: yup.string().required(),
+      in_organization: yup.string().nullable(),
+      ex_organization: yup.string().nullable(),
+      responsible_staff: yup.string().nullable(),
     });
 
     // Fetch
-    const fetchCampus = () => {
-      ApiService.get("campus")
+    const fetchCenter = () => {
+      ApiService.get("center")
         .then(({ data }) => {
           if (data.msg != "success") {
             throw new Error("ERROR");
           }
-          selectOptions.value.campus = data.data;
+          selectOptions.value.center = data.data;
+        })
+        .catch(({ response }) => {
+          console.log(response.data.errors);
+        });
+    };
+
+    const fetchProjectType = () => {
+      ApiService.get("project-type")
+        .then(({ data }) => {
+          if (data.msg != "success") {
+            throw new Error("ERROR");
+          }
+          selectOptions.value.project_type = data.data;
         })
         .catch(({ response }) => {
           console.log(response.data.errors);
@@ -184,10 +243,14 @@ export default defineComponent({
     const onSubmit = () => {
       let params = {
         ...item.value,
-        campus_id: item.value.campus_id ? item.value.campus_id.id : undefined,
+        project_date: dayjs(item.value.project_date).format("YYYY-MM-DD"),
+        center_id: item.value.center_id ? item.value.center_id.id : undefined,
+        project_type_id: item.value.project_type_id
+          ? item.value.project_type_id.id
+          : undefined,
       };
 
-      ApiService.post("center/", params)
+      ApiService.post("project/", params)
         .then(({ data }) => {
           if (data.msg != "success") {
             throw new Error("ERROR");
@@ -195,7 +258,7 @@ export default defineComponent({
 
           useToast("เพิ่มข้อมูลเสร็จสิ้น", "success");
 
-          router.push({ name: "center-id", params: { id: data.id } });
+          router.push({ name: "project-id", params: { id: data.id } });
         })
         .catch(({ response }) => {
           console.log(response);
@@ -203,7 +266,8 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      fetchCampus();
+      fetchCenter();
+      fetchProjectType();
     });
     return {
       item,
@@ -211,6 +275,7 @@ export default defineComponent({
       router,
       selectOptions,
       onValidate,
+      format
     };
   },
 });

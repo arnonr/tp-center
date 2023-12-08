@@ -32,15 +32,32 @@ export const useAuthStore = defineStore("auth", () => {
     user.value = {} as User;
     errors.value = [];
     JwtService.destroyToken();
+    localStorage.removeItem("userData");
   }
 
   function login(credentials: User) {
     return ApiService.post("user/login", credentials)
       .then(({ data }) => {
-        setAuth(data);
+        if (data.msg != "success") {
+          setError({ name: data.msg });
+        } else {
+          setAuth(data);
+
+          localStorage.removeItem("userData");
+          localStorage.setItem(
+            "userData",
+            JSON.stringify({
+              id: data.id,
+              name: data.name,
+              username: data.username,
+              group_id: data.group_id,
+            })
+          );
+          //   console.log(JSON.parse(localStorage.getItem("userData")).id);
+        }
       })
       .catch(({ response }) => {
-        setError(response.data.errors);
+        setError({ name: response.data.msg });
       });
   }
 

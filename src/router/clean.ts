@@ -29,8 +29,8 @@ const routes: Array<RouteRecordRaw> = [
         name: "center-add",
         component: () => import("@/views/center/add.vue"),
         meta: {
-            pageTitle: "ข้อมูลศูนย์ปฏิบัติการ",
-          breadcrumbs: ["รายการศูนย์ปฏิบัติการ","ข้อมูลศูนย์ปฏิบัติการ"],
+          pageTitle: "ข้อมูลศูนย์ปฏิบัติการ",
+          breadcrumbs: ["รายการศูนย์ปฏิบัติการ", "ข้อมูลศูนย์ปฏิบัติการ"],
         },
       },
       {
@@ -39,7 +39,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/center/view/id.vue"),
         meta: {
           pageTitle: "ข้อมูลศูนย์ปฏิบัติการ",
-          breadcrumbs: ["รายการศูนย์ปฏิบัติการ","ข้อมูลศูนย์ปฏิบัติการ"],
+          breadcrumbs: ["รายการศูนย์ปฏิบัติการ", "ข้อมูลศูนย์ปฏิบัติการ"],
         },
       },
       {
@@ -48,7 +48,136 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/center/edit/id.vue"),
         meta: {
           pageTitle: "ข้อมูลศูนย์ปฏิบัติการ",
-          breadcrumbs: ["รายการศูนย์ปฏิบัติการ","แก้ไขศูนย์ปฏิบัติการ"],
+          breadcrumbs: ["รายการศูนย์ปฏิบัติการ", "แก้ไขศูนย์ปฏิบัติการ"],
+        },
+      },
+      //   project
+      {
+        path: "/project",
+        name: "project",
+        component: () => import("@/views/project/index.vue"),
+        meta: {
+          pageTitle: "โครงการ",
+          breadcrumbs: ["โครงการ"],
+        },
+      },
+      {
+        path: "/project/add/",
+        name: "project-add",
+        component: () => import("@/views/project/add.vue"),
+        meta: {
+          pageTitle: "ข้อมูลโครงการ",
+          breadcrumbs: ["รายการโครงการ", "ข้อมูลโครงการ"],
+        },
+      },
+      {
+        path: "/project/edit/:id",
+        name: "project-edit-id",
+        component: () => import("@/views/project/edit/id.vue"),
+        meta: {
+          pageTitle: "ข้อมูลโครงการ",
+          breadcrumbs: ["รายการโครงการ", "ข้อมูลโครงการ"],
+        },
+      },
+      {
+        path: "/project/:id",
+        name: "project-id",
+        component: () => import("@/views/project/view/id.vue"),
+        meta: {
+          pageTitle: "ข้อมูลโครงการ",
+          breadcrumbs: ["รายการโครงการ", "ข้อมูลโครงการ"],
+        },
+      },
+      //   inspection
+      {
+        path: "/inspection",
+        name: "inspection",
+        component: () => import("@/views/inspection/index.vue"),
+        meta: {
+          pageTitle: "ออกเลขงานทดสอบ/ตรวจสอบ",
+          breadcrumbs: ["ออกเลขงานทดสอบ/ตรวจสอบ"],
+        },
+      },
+      {
+        path: "/inspection/add/",
+        name: "inspection-add",
+        component: () => import("@/views/inspection/add.vue"),
+        meta: {
+          pageTitle: "ข้อมูลออกเลขงานทดสอบ/ตรวจสอบ",
+          breadcrumbs: [
+            "รายการออกเลขงานทดสอบ/ตรวจสอบ",
+            "ข้อมูลออกเลขงานทดสอบ/ตรวจสอบ",
+          ],
+        },
+      },
+      {
+        path: "/inspection/edit/:id",
+        name: "inspection-edit-id",
+        component: () => import("@/views/inspection/edit/id.vue"),
+        meta: {
+          pageTitle: "ข้อมูลออกเลขงานทดสอบ/ตรวจสอบ",
+          breadcrumbs: [
+            "รายการออกเลขงานทดสอบ/ตรวจสอบ",
+            "ข้อมูลออกเลขงานทดสอบ/ตรวจสอบ",
+          ],
+        },
+      },
+      {
+        path: "/inspection/:id",
+        name: "inspection-id",
+        component: () => import("@/views/inspection/view/id.vue"),
+        meta: {
+          pageTitle: "ข้อมูลออกเลขงานทดสอบ/ตรวจสอบ",
+          breadcrumbs: [
+            "รายการออกเลขงานทดสอบ/ตรวจสอบ",
+            "ข้อมูลออกเลขงานทดสอบ/ตรวจสอบ",
+          ],
+        },
+      },
+      //   user
+      {
+        path: "/user",
+        name: "user",
+        component: () => import("@/views/user/index.vue"),
+        meta: {
+          pageTitle: "จัดการผู้ใช้งาน",
+          breadcrumbs: ["จัดการผู้ใช้งาน"],
+        },
+      },
+      {
+        path: "/inspection/add/",
+        name: "inspection-add",
+        component: () => import("@/views/inspection/add.vue"),
+        meta: {
+          pageTitle: "ข้อมูลออกเลขงานทดสอบ/ตรวจสอบ",
+          breadcrumbs: [
+            "รายการออกเลขงานทดสอบ/ตรวจสอบ",
+            "ข้อมูลออกเลขงานทดสอบ/ตรวจสอบ",
+          ],
+        },
+      },
+      {
+        path: "/inspection/edit/:id",
+        name: "inspection-edit-id",
+        component: () => import("@/views/inspection/edit/id.vue"),
+        meta: {
+          pageTitle: "ข้อมูลออกเลขงานทดสอบ/ตรวจสอบ",
+          breadcrumbs: [
+            "รายการออกเลขงานทดสอบ/ตรวจสอบ",
+            "ข้อมูลออกเลขงานทดสอบ/ตรวจสอบ",
+          ],
+        },
+      },
+      {
+        path: "/inspection/:id",
+        name: "inspection-id",
+        component: () => import("@/views/inspection/view/id.vue"),
+        meta: {
+          pageTitle: "ข้อมูลออกเลขงานทดสอบ/ตรวจสอบ",
+          breadcrumbs: [
+            "รายการออกเลขงานทดสอบ/ตรวจสอบ",
+            "ข้อมูลออกเลขงานทดสอบ/ตรวจสอบ",
+          ],
         },
       },
     ],
