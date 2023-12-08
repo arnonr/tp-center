@@ -199,7 +199,7 @@ export default defineComponent({
       return route.path.indexOf(match) !== -1;
     };
 
-    const userData = JSON.parse(localStorage.getItem("userData"));
+    const userData = JSON.parse(localStorage.getItem("userData") || '{}');
     return {
       hasActiveChildren,
       MainMenuConfig,

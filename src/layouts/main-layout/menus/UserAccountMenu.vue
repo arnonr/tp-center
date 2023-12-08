@@ -274,7 +274,7 @@ export default defineComponent({
       return countries[i18n.locale.value as keyof typeof countries];
     });
 
-    const userData = JSON.parse(localStorage.getItem("userData"));
+    const userData = JSON.parse(localStorage.getItem("userData") || "{}");
 
     return {
       signOut,

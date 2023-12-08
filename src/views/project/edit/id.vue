@@ -53,7 +53,7 @@
                 />
 
                 <v-select
-                  v-if="c.type == 'select'"
+                  v-if="c.select != null"
                   :label="c.selectLabel"
                   :name="c.columnName"
                   :placeholder="c.columnLabel"
@@ -299,7 +299,7 @@ export default defineComponent({
       });
     });
 
-    const userData = JSON.parse(localStorage.getItem("userData"));
+    const userData = JSON.parse(localStorage.getItem("userData") || "{}");
 
     return {
       item,

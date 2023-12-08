@@ -350,7 +350,7 @@ export default defineComponent({
       fetchItems();
     });
 
-    const userData = JSON.parse(localStorage.getItem("userData"));
+    const userData = JSON.parse(localStorage.getItem("userData") || '{}');
 
     return {
       tableHeader,

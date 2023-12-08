@@ -1,6 +1,6 @@
 interface General {
   mode: "dark" | "light" | "system";
-  primaryColor: "#50CD89";
+  primaryColor: "#FF6600";
   pageWidth: string;
   layout: "dark-sidebar" | "light-sidebar" | "light-header" | "dark-header";
   iconsType: "duotone" | "solid" | "outline";

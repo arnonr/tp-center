@@ -301,7 +301,7 @@
 
 <script lang="ts">
 import { getAssetPath } from "@/core/helpers/assets";
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useI18n } from "vue-i18n";
 // import MainMenuConfig from "@/core/config/MainMenuConfig";
@@ -327,7 +327,8 @@ export default defineComponent({
       }
     };
 
-    const userData = JSON.parse(localStorage.getItem("userData"));
+    const userData = JSON.parse(localStorage.getItem("userData") || '{}');
+  
 
     return {
       hasActiveChildren,

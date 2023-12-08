@@ -106,16 +106,15 @@
                         () => {
                           item = { ...it };
                           item.center_id = selectOptions.center.find((x) => {
-                            return x.id == it.center_id;
+                            return x['id'] == it.center_id;
                           });
 
                           item.group_id = selectOptions.group.find((x) => {
-                            return x.id == it.group_id;
+                            return x['id'] == it.group_id;
                           });
 
-                          item.status = selectOptions.user_statuses.find(
-                            (x) => {
-                              return x.id == it.status;
+                          item.status = selectOptions.user_statuses.find((x) => {
+                              return x['id'] == it.status;
                             }
                           );
 

@@ -122,7 +122,7 @@
                         () => {
                           item = { ...it };
                           item.center_id = selectOptions.center.find((x) => {
-                            return x.id == it.center_id;
+                            return x['id'] == it.center_id;
                           });
 
                           item.type = selectOptions.type.find((x) => {
@@ -565,7 +565,7 @@ export default defineComponent({
       fetchItems();
     });
 
-    const userData = JSON.parse(localStorage.getItem("userData"));
+    const userData = JSON.parse(localStorage.getItem("userData") || '{}');
     return {
       tableHeader,
       totalPage,

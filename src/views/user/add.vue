@@ -53,7 +53,7 @@
                 />
 
                 <v-select
-                  v-if="c.type == 'select'"
+                  v-if="c.select != null"
                   :label="c.selectLabel"
                   :name="c.columnName"
                   :placeholder="c.columnLabel"

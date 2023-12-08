@@ -53,7 +53,7 @@
                 />
 
                 <v-select
-                  v-if="c.type == 'select'"
+                  v-if="c.select != null"
                   :label="c.selectLabel"
                   :name="c.columnName"
                   :placeholder="c.columnLabel"
@@ -65,7 +65,7 @@
 
                 <VueDatePicker
                   v-if="c.type == 'date'"
-                  v-model="item[c.columnName]"
+                  v-model="item[c['columnName']]"
                   :enable-time-picker="false"
                   locale="th"
                   auto-apply
@@ -135,6 +135,7 @@ export default defineComponent({
       {
         columnName: "name",
         columnLabel: "ชื่อโครงการ",
+        select: null,
         type: "text",
       },
       {
@@ -154,36 +155,43 @@ export default defineComponent({
       {
         columnName: "budget",
         columnLabel: "งบประมาณ",
+        select: null,
         type: "text",
       },
       {
         columnName: "trl",
         columnLabel: "TRL",
+        select: null,
         type: "number",
       },
       {
         columnName: "in_organization",
         columnLabel: "หน่วยงาน",
+        select: null,
         type: "text",
       },
       {
         columnName: "ex_organization",
         columnLabel: "สถานประกอบการ",
+        select: null,
         type: "text",
       },
       {
         columnName: "responsible_staff",
         columnLabel: "ผู้รับผิดชอบ",
+        select: null,
         type: "text",
       },
       {
         columnName: "project_date",
         columnLabel: "วันที่",
+        select: null,
         type: "date",
       },
       {
         columnName: "file",
         columnLabel: "อัพโหลดไฟล์",
+        select: null,
         type: "file",
       },
     ];
