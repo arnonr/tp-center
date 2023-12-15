@@ -102,7 +102,6 @@
                   <td class="text-center">{{ it.name }}</td>
                   <td class="text-center">
                     {{ useBasicData().types[it.type-1].name }}
-                    
                   </td>
                   <td class="text-center">{{ it.center.name_th }}</td>
                   <td class="text-center">{{ it.company_name }}</td>
@@ -443,7 +442,7 @@ export default defineComponent({
         center_id: search.value.center_id
           ? search.value.center_id.id
           : undefined,
-        type: search.value.type ? search.value.type.id : undefined,
+        type: search.value.type ? search.value.type.value : undefined,
       };
 
       if (userData.group_id != 1) {
