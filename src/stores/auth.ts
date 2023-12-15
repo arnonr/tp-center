@@ -51,6 +51,7 @@ export const useAuthStore = defineStore("auth", () => {
               name: data.name,
               username: data.username,
               group_id: data.group_id,
+              center_id: data.center_id
             })
           );
           //   console.log(JSON.parse(localStorage.getItem("userData")).id);

@@ -241,6 +241,7 @@ export default defineComponent({
       };
     }
 
+    const userData = JSON.parse(localStorage.getItem("userData") || '{}');
     const items = ref<Array<info>>([]);
 
     const perPage = ref<Number>(10);
@@ -350,7 +351,6 @@ export default defineComponent({
       fetchItems();
     });
 
-    const userData = JSON.parse(localStorage.getItem("userData") || '{}');
 
     return {
       tableHeader,

@@ -197,6 +197,7 @@ export default defineComponent({
     }
 
     const items = ref<Array<info>>([]);
+    const userData = JSON.parse(localStorage.getItem("userData") || "{}");
 
     const perPage = ref<Number>(10);
     const currentPage = ref<Number>(1);
@@ -243,9 +244,8 @@ export default defineComponent({
           ? search.value.campus_id.id
           : undefined,
       };
-      
       if (userData.group_id != 1) {
-        params['id'] = userData.center_id
+        params["id"] = userData.center_id;
       }
 
       ApiService.query("center", { params: params })
@@ -277,7 +277,6 @@ export default defineComponent({
       fetchItems();
     });
 
-    const userData = JSON.parse(localStorage.getItem("userData") || '{}');
     return {
       tableHeader,
       totalPage,
