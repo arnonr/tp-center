@@ -56,13 +56,23 @@
               />
             </div>
             <div class="col-lg-4">
-              <label for="name_en">ชื่อศูนย์ (EN)</label>
+              <label for="name_en">ชื่อหัวหน้าศูนย์</label>
               <input
                 type="text"
-                name="txt-search-name-en"
-                id="txt-search-name-en"
+                name="txt-search-head_of_center"
+                id="txt-search-head_of_center"
                 class="form-control"
-                v-model="search.name_en"
+                v-model="search.head_of_center"
+              />
+            </div>
+            <div class="col-lg-4">
+              <label for="name_en">ชื่อผู้รับผิดชอบ</label>
+              <input
+                type="text"
+                name="txt-search-responsible_staff"
+                id="txt-search-responsible_staff"
+                class="form-control"
+                v-model="search.responsible_staff"
               />
             </div>
           </div>
@@ -98,7 +108,10 @@
                   <td class="text-center">{{ it.code }}</td>
                   <td class="text-center">{{ it.short_name }}</td>
                   <td>{{ it.name_th }}</td>
-                  <td>{{ it.name_en }}</td>
+                  <td>{{ it.head_of_center }}</td>
+                  <td>{{ it.head_of_center_phone }}</td>
+                  <td>{{ it.head_of_center_email }}</td>
+                  <td>{{ it.responsible_staff }}</td>
                   <td class="text-center">{{ it.campus.name_th }}</td>
                   <td class="text-center">
                     <router-link
@@ -169,8 +182,20 @@ export default defineComponent({
         columnLabel: "name_th",
       },
       {
-        columnName: "ชื่อศูนย์ (EN)",
-        columnLabel: "name_en",
+        columnName: "หัวหน้าศูนย์",
+        columnLabel: "head_of_center",
+      },
+      {
+        columnName: "เบอร์ติดต่อ",
+        columnLabel: "head_of_center_phone",
+      },
+      {
+        columnName: "อีเมล",
+        columnLabel: "head_of_center_email",
+      },
+      {
+        columnName: "ผู้รับผิดชอบ",
+        columnLabel: "responsible_staff",
       },
       {
         columnName: "วิทยาเขต",
@@ -190,6 +215,7 @@ export default defineComponent({
       name_th: string;
       name_en: string;
       head_of_center: string;
+      responsible_staff: string;
       is_publish: Number;
       campus: {
         name_th: string;

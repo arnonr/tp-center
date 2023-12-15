@@ -123,6 +123,31 @@ export default defineComponent({
         columnLabel: "หัวหน้าศูนย์",
         type: "text",
       },
+      {
+        columnName: "head_of_center_phone",
+        columnLabel: "เบอร์ติดต่อ (หัวหน้าศูนย์)",
+        type: "text",
+      },
+      {
+        columnName: "head_of_center_email",
+        columnLabel: "อีเมล (หัวหน้าศูนย์)",
+        type: "text",
+      },
+      {
+        columnName: "responsible_staff",
+        columnLabel: "ผู้รับผิดชอบ (สำนักงานอำนวยการ)",
+        type: "text",
+      },
+      {
+        columnName: "responsible_phone",
+        columnLabel: "เบอร์โทรศัพท์ ผู้รับผิดชอบ",
+        type: "text",
+      },
+      {
+        columnName: "responsible_email",
+        columnLabel: "อีเมล ผู้รับผิดชอบ",
+        type: "text",
+      },
     ];
 
     interface info {
@@ -132,7 +157,12 @@ export default defineComponent({
       name_th: string;
       name_en: string;
       head_of_center: string;
+      head_of_center_phone: string;
+      head_of_center_email: string;
       is_publish: Number;
+      responsible_staff: string;
+      responsible_phone: string;
+      responsible_email: string;
     }
 
     const item = ref<info>({
@@ -142,6 +172,11 @@ export default defineComponent({
       name_th: "",
       name_en: "",
       head_of_center: "",
+      head_of_center_phone: "",
+      head_of_center_email: "",
+      responsible_staff: "",
+      responsible_phone: "",
+      responsible_email: "",
       is_publish: 1,
     });
     const selectOptions = ref<any>({
@@ -155,6 +190,11 @@ export default defineComponent({
       name_th: yup.string().required(),
       name_en: yup.string().nullable(),
       head_of_center: yup.string().nullable(),
+      head_of_center_phone: yup.string().nullable(),
+      head_of_center_email: yup.string().nullable(),
+      responsible_staff: yup.string().nullable(),
+      responsible_phone: yup.string().nullable(),
+      responsible_email: yup.string().nullable(),
     });
 
     // Fetch

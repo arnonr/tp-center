@@ -86,6 +86,8 @@
                           {{ it.prefix + it.firstname + " " + it.surname }}
                         </td>
                         <td class="text-center">{{ it.position }}</td>
+                        <td class="text-center">{{ it.phone }}</td>
+                        <td class="text-center">{{ it.email }}</td>
                         <td class="text-center">
                           <button class="btn btn-sm btn-primary btn-icon">
                             <i
@@ -245,6 +247,31 @@ export default defineComponent({
         columnLabel: "หัวหน้าศูนย์",
         type: null,
       },
+      {
+        columnName: "head_of_center_phone",
+        columnLabel: "เบอร์ติดต่อ (หัวหน้าศูนย์)",
+        type: null,
+      },
+      {
+        columnName: "head_of_center_email",
+        columnLabel: "อีเมล (หัวหน้าศูนย์)",
+        type: null,
+      },
+      {
+        columnName: "responsible_staff",
+        columnLabel: "ผู้รับผิดชอบ (สำนักงานอำนวยการ)",
+        type: null,
+      },
+      {
+        columnName: "responsible_phone",
+        columnLabel: "เบอร์ติดต่อ (ผู้รับผิดชอบ)",
+        type: null,
+      },
+      {
+        columnName: "responsible_email",
+        columnLabel: "อีเมล (ผู้รับผิดชอบ)",
+        type: null,
+      },
     ];
 
     // Variable Data
@@ -263,6 +290,14 @@ export default defineComponent({
         columnLabel: "position",
       },
       {
+        columnName: "เบอร์ติดต่อ",
+        columnLabel: "phone",
+      },
+      {
+        columnName: "อีเมล",
+        columnLabel: "email",
+      },
+      {
         columnName: "จัดการ",
         columnLabel: "manage",
       },
@@ -273,6 +308,8 @@ export default defineComponent({
       firstname: yup.string().required(),
       surname: yup.string().required(),
       position: yup.string().required(),
+      phone: yup.string(),
+      email: yup.string(),
     });
     const columnAdministrator = [
       {
@@ -293,6 +330,16 @@ export default defineComponent({
       {
         columnName: "position",
         columnLabel: "ตำแหน่ง",
+        type: "text",
+      },
+      {
+        columnName: "phone",
+        columnLabel: "เบอร์ติดต่อ",
+        type: "text",
+      },
+      {
+        columnName: "email",
+        columnLabel: "อีเมล",
         type: "text",
       },
     ];
@@ -360,6 +407,7 @@ export default defineComponent({
     // Administrator
     const onValidate = async () => {
       try {
+        console.log(administrator.value);
         await schema.validate(administrator.value);
         onSubmit();
       } catch (error) {
