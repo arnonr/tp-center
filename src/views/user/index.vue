@@ -113,7 +113,8 @@
                             return x['id'] == it.group_id;
                           });
 
-                          item.status = selectOptions.user_statuses.find((x) => {
+                          item.status = selectOptions.user_statuses.find(
+                            (x) => {
                               return x['id'] == it.status;
                             }
                           );
@@ -366,7 +367,11 @@ export default defineComponent({
 
     // Fetch
     const fetchCenter = () => {
-      ApiService.get("center")
+      const params = {
+        perPage: 50,
+      };
+
+      ApiService.query("center", { params: params })
         .then(({ data }) => {
           if (data.msg != "success") {
             throw new Error("ERROR");
