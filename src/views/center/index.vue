@@ -215,6 +215,8 @@ export default defineComponent({
       name_th: string;
       name_en: string;
       head_of_center: string;
+      head_of_center_phone: string;
+      head_of_center_email: string;
       responsible_staff: string;
       is_publish: Number;
       campus: {
