@@ -218,7 +218,11 @@ export default defineComponent({
 
     // Fetch
     const fetchCenter = () => {
-      ApiService.get("center")
+      const params = {
+        perPage: 50,
+      };
+
+      ApiService.query("user", { params: params })
         .then(({ data }) => {
           if (data.msg != "success") {
             throw new Error("ERROR");
