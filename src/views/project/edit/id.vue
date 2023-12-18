@@ -205,7 +205,7 @@ export default defineComponent({
 
     // Fetch
     const fetchCenter = async () => {
-      let params = {};
+      let params = { perPage: 50 };
 
       if (userData.group_id != 1) {
         params["id"] = userData.center_id;

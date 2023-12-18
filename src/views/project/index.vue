@@ -241,7 +241,7 @@ export default defineComponent({
       };
     }
 
-    const userData = JSON.parse(localStorage.getItem("userData") || '{}');
+    const userData = JSON.parse(localStorage.getItem("userData") || "{}");
     const items = ref<Array<info>>([]);
 
     const perPage = ref<Number>(10);
@@ -286,7 +286,7 @@ export default defineComponent({
     };
 
     const fetchCenter = () => {
-      let params = {};
+      let params = { perPage: 50 };
 
       if (userData.group_id != 1) {
         params["id"] = userData.center_id;
@@ -350,7 +350,6 @@ export default defineComponent({
       fetchCenter();
       fetchItems();
     });
-
 
     return {
       tableHeader,

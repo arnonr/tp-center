@@ -101,7 +101,7 @@
                   <td class="text-center">{{ it.code }}</td>
                   <td class="text-center">{{ it.name }}</td>
                   <td class="text-center">
-                    {{ useBasicData().types[it.type-1].name }}
+                    {{ useBasicData().types[it.type - 1].name }}
                   </td>
                   <td class="text-center">{{ it.center.name_th }}</td>
                   <td class="text-center">{{ it.company_name }}</td>
@@ -400,7 +400,7 @@ export default defineComponent({
 
     // Fetch
     const fetchCenter = () => {
-      let params = {};
+      let params = { perPage: 50 };
 
       if (userData.group_id != 1) {
         params["id"] = userData.center_id;
