@@ -181,7 +181,7 @@
           <div class="modal-body">
             <div class="row">
               <div class="form-group row mb-5">
-                <div class="col-lg-12 mt-5">
+                <!-- <div class="col-lg-12 mt-5">
                   <label class="label"
                     ><span class="text-danger">*</span>ICIT Account</label
                   >
@@ -192,7 +192,7 @@
                     class="form-control"
                     v-model="item.username"
                   />
-                </div>
+                </div> -->
 
                 <div class="col-lg-12 mt-5">
                   <label class="label"
