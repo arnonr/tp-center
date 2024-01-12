@@ -186,7 +186,7 @@ export default defineComponent({
       {
         columnName: "gallery_image_url",
         columnLabel: "ลิงค์รูปภาพ (Google Drive or OneDrive)",
-        type: "text",
+        type: "textarea",
       },
     ];
 
