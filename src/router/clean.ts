@@ -180,6 +180,33 @@ const routes: Array<RouteRecordRaw> = [
           ],
         },
       },
+      {
+        path: "/center-new",
+        name: "center-new",
+        component: () => import("@/views/center-new/index.vue"),
+        meta: {
+          pageTitle: "ศูนย์ปฏิบัติการใหม่",
+          breadcrumbs: ["รายการศูนย์ปฏิบัติการ"],
+        },
+      },
+      {
+        path: "/center-new/add/",
+        name: "center-new-add",
+        component: () => import("@/views/center-new/add.vue"),
+        meta: {
+          pageTitle: "เพิ่มศูนย์ปฏิบัติการใหม่",
+          breadcrumbs: ["รายการศูนย์ปฏิบัติการ", "ข้อมูลศูนย์ปฏิบัติการใหม่"],
+        },
+      },
+      {
+        path: "/center-new/edit/:id",
+        name: "center-new-edit-id",
+        component: () => import("@/views/center-new/edit/id.vue"),
+        meta: {
+          pageTitle: "แก้ไขศูนย์ปฏิบัติการใหม่",
+          breadcrumbs: ["รายการศูนย์ปฏิบัติการ", "ข้อมูลศูนย์ปฏิบัติการใหม่"],
+        },
+      },
     ],
   },
   {

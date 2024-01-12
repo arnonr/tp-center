@@ -9,7 +9,7 @@
         <div class="card-body">
           <div class="row">
             <div
-              class="col-12 col-lg-4"
+              class="col-12 col-lg-2"
               v-if="selectOptions.campus.length != 0"
             >
               <label for="campus_id">วิทยาเขต</label>
@@ -23,7 +23,7 @@
               ></v-select>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-2">
               <label for="code">รหัส</label>
               <input
                 type="text"
@@ -33,7 +33,8 @@
                 v-model="search.code"
               />
             </div>
-            <div class="col-lg-4">
+
+            <div class="col-lg-2">
               <label for="short_name">ตัวย่อ</label>
               <input
                 type="text"
@@ -43,9 +44,8 @@
                 v-model="search.short_name"
               />
             </div>
-          </div>
-          <div class="row mt-5">
-            <div class="col-lg-4">
+
+            <div class="col-lg-6">
               <label for="name_th">ชื่อศูนย์ (TH)</label>
               <input
                 type="text"
@@ -53,6 +53,19 @@
                 id="txt-search-name-th"
                 class="form-control"
                 v-model="search.name_th"
+              />
+            </div>
+          </div>
+
+          <div class="row mt-5">
+            <div class="col-lg-4">
+              <label for="location">สถานที่ตั้ง</label>
+              <input
+                type="text"
+                name="txt-search-location"
+                id="txt-search-location"
+                class="form-control"
+                v-model="search.location"
               />
             </div>
             <div class="col-lg-4">
@@ -73,6 +86,38 @@
                 id="txt-search-responsible_staff"
                 class="form-control"
                 v-model="search.responsible_staff"
+              />
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-lg-4">
+              <label for="expertise">ความเชี่ยวชาญ</label>
+              <input
+                type="text"
+                name="txt-search-expertise"
+                id="txt-search-expertise"
+                class="form-control"
+                v-model="search.expertise"
+              />
+            </div>
+            <div class="col-lg-4">
+              <label for="about">ข้อมูลศูนย์เบื้องต้น</label>
+              <input
+                type="text"
+                name="txt-search-about"
+                id="txt-search-about"
+                class="form-control"
+                v-model="search.about"
+              />
+            </div>
+            <div class="col-lg-4">
+              <label for="service">บริการของศูนย์</label>
+              <input
+                type="text"
+                name="txt-search-about"
+                id="txt-search-about"
+                class="form-control"
+                v-model="search.service"
               />
             </div>
           </div>
@@ -118,7 +163,7 @@
                       :to="'/center/' + it.id"
                       class="btn btn-sm btn-primary btn-icon"
                     >
-                      <i class="fa fa-edit"></i>
+                      <i class="fa fa-eye"></i>
                     </router-link>
                   </td>
                 </tr>
@@ -202,7 +247,7 @@ export default defineComponent({
         columnLabel: "campus",
       },
       {
-        columnName: "จัดการ",
+        columnName: "ดูข้อมูล",
         columnLabel: "salary",
       },
     ]);
@@ -219,6 +264,10 @@ export default defineComponent({
       head_of_center_email: string;
       responsible_staff: string;
       is_publish: Number;
+      location: String;
+      expertise: string;
+      about: string;
+      service: string;
       campus: {
         name_th: string;
       };
@@ -237,6 +286,10 @@ export default defineComponent({
       short_name: "",
       name_th: "",
       name_en: "",
+      location: "",
+      about: "",
+      service: "",
+      expertise: "",
     });
 
     const selectOptions = ref({

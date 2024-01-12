@@ -41,6 +41,12 @@ const MainMenuConfig: Array<MenuItem> = [
         keenthemesIcon: "user",
         bootstrapIcon: "bi-app-indicator",
       },
+    //   {
+    //     heading: "ศูนย์ปฏิบัติการใหม่",
+    //     route: "/center-new",
+    //     keenthemesIcon: "eye    ",
+    //     bootstrapIcon: "bi-app-indicator",
+    //   },
     ],
   },
 ];

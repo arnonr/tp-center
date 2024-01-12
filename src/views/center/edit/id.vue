@@ -41,7 +41,7 @@
                   :placeholder="c.columnLabel"
                   v-model="item[c.columnName]"
                   :name="c.columnName"
-                  :disabled="c.disabled ? c.disabled: false"
+                  :disabled="c.disabled ? c.disabled : false"
                 />
 
                 <v-select
@@ -54,6 +54,16 @@
                   class="form-control"
                   :clearable="true"
                 ></v-select>
+
+                <textarea
+                  v-if="c.type == 'textarea'"
+                  type="text"
+                  class="form-control"
+                  :placeholder="c.columnLabel"
+                  v-model="item[c.columnName]"
+                  :name="c.columnName"
+                  :disabled="c.disabled ? c.disabled : false"
+                />
               </div>
             </div>
           </div>
@@ -108,6 +118,12 @@ export default defineComponent({
       responsible_staff: string;
       responsible_phone: string;
       responsible_email: string;
+      expertise: string;
+      about: string;
+      location: string;
+      service: string;
+      website: string;
+      gallery_image_url: string;
     }
 
     const column = [
@@ -135,6 +151,11 @@ export default defineComponent({
         columnName: "campus_id",
         columnLabel: "วิทยาเขต",
         type: "select",
+      },
+      {
+        columnName: "location",
+        columnLabel: "สถานที่ตั้ง",
+        type: "text",
       },
       {
         columnName: "head_of_center",
@@ -169,7 +190,33 @@ export default defineComponent({
         type: "text",
         disabled: userData.group_id == 1 ? false : true,
       },
+      {
+        columnName: "expertise",
+        columnLabel: "ความเชี่ยวชาญ",
+        type: "textarea",
+      },
+      {
+        columnName: "about",
+        columnLabel: "ข้อมูลเบื้องต้นของศูนย์",
+        type: "textarea",
+      },
+      {
+        columnName: "service",
+        columnLabel: "บริการของศูนย์",
+        type: "textarea",
+      },
+      {
+        columnName: "website",
+        columnLabel: "Website / Facebook Fanpage",
+        type: "textarea",
+      },
+      {
+        columnName: "gallery_image_url",
+        columnLabel: "ลิงค์รูปภาพ (Google Drive or OneDrive)",
+        type: "text",
+      },
     ];
+
     const item = ref<info>({
       id: null,
       campus_id: null,
@@ -184,7 +231,14 @@ export default defineComponent({
       responsible_phone: "",
       responsible_email: "",
       is_publish: 1,
+      expertise: "",
+      about: "",
+      location: "",
+      service: "",
+      website: "",
+      gallery_image_url: "",
     });
+
     const selectOptions = ref<any>({
       campus: [],
     });
@@ -202,6 +256,12 @@ export default defineComponent({
       responsible_staff: yup.string().nullable(),
       responsible_phone: yup.string().nullable(),
       responsible_email: yup.string().nullable(),
+      expertise: yup.string().nullable(),
+      about: yup.string().nullable(),
+      location: yup.string().nullable(),
+      service: yup.string().nullable(),
+      website: yup.string().nullable(),
+      gallery_image_url: yup.string().nullable(),
     });
 
     // Fetch
@@ -212,6 +272,7 @@ export default defineComponent({
             throw new Error("ERROR");
           }
           selectOptions.value.campus = data.data;
+          fetchCenter();
         })
         .catch(({ response }) => {
           console.log(response.data.errors);
@@ -225,6 +286,7 @@ export default defineComponent({
             throw new Error("ERROR");
           }
           item.value = data.data;
+          console.log(selectOptions.value)
           item.value.campus_id = selectOptions.value.campus.find((x: any) => {
             return x.id == item.value.campus_id;
           });
@@ -267,7 +329,6 @@ export default defineComponent({
 
     onMounted(() => {
       fetchCampus();
-      fetchCenter();
     });
     return {
       item,

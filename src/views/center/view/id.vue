@@ -243,6 +243,11 @@ export default defineComponent({
         type: "relation1",
       },
       {
+        columnName: "location",
+        columnLabel: "ที่ตั้ง",
+        type: null,
+      },
+      {
         columnName: "head_of_center",
         columnLabel: "หัวหน้าศูนย์",
         type: null,
@@ -270,6 +275,34 @@ export default defineComponent({
       {
         columnName: "responsible_email",
         columnLabel: "อีเมล (ผู้รับผิดชอบ)",
+        type: null,
+      },
+      {
+        columnName: "expertise",
+        columnLabel: "ความเชี่ยวชาญ",
+        type: null,
+      },
+      {
+        columnName: "about",
+        columnLabel: "ข้อมูลเบื้องต้น",
+        type: null,
+      },
+      {
+        columnName: "service",
+        columnLabel: "บริการของศูนย์",
+        type: null,
+      },
+
+      {
+        columnName: "website",
+        columnLabel: "Website / Facebook",
+        type: null,
+      },
+
+
+      {
+        columnName: "gallery_image_url",
+        columnLabel: "รูปเครื่องมือหรือรูปที่เกี่ยวข้องศูนย์ปฏิบัติการ",
         type: null,
       },
     ];
@@ -372,7 +405,7 @@ export default defineComponent({
           console.log(response);
         });
     };
-
+    
     // Event
     const onConfirmDelete = async (id: number) => {
       Swal.fire({

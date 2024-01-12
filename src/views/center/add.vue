@@ -53,6 +53,15 @@
                   class="form-control"
                   :clearable="true"
                 ></v-select>
+
+                <textarea
+                  v-if="c.type == 'textarea'"
+                  type="text"
+                  class="form-control"
+                  :placeholder="c.columnLabel"
+                  v-model="item[c.columnName]"
+                  :name="c.columnName"
+                />
               </div>
             </div>
           </div>
@@ -119,6 +128,11 @@ export default defineComponent({
         type: "select",
       },
       {
+        columnName: "location",
+        columnLabel: "สถานที่ตั้ง",
+        type: "text",
+      },
+      {
         columnName: "head_of_center",
         columnLabel: "หัวหน้าศูนย์",
         type: "text",
@@ -148,6 +162,31 @@ export default defineComponent({
         columnLabel: "อีเมล ผู้รับผิดชอบ",
         type: "text",
       },
+      {
+        columnName: "expertise",
+        columnLabel: "ความเชี่ยวชาญ",
+        type: "textarea",
+      },
+      {
+        columnName: "about",
+        columnLabel: "ข้อมูลเบื้องต้นของศูนย์",
+        type: "textarea",
+      },
+      {
+        columnName: "service",
+        columnLabel: "บริการของศูนย์",
+        type: "textarea",
+      },
+      {
+        columnName: "website",
+        columnLabel: "Website / Facebook Fanpage",
+        type: "textarea",
+      },
+      {
+        columnName: "gallery_image_url",
+        columnLabel: "ลิงค์รูปภาพ (Google Drive or OneDrive)",
+        type: "text",
+      },
     ];
 
     interface info {
@@ -163,6 +202,12 @@ export default defineComponent({
       responsible_staff: string;
       responsible_phone: string;
       responsible_email: string;
+      expertise: string;
+      about: string;
+      location: string;
+      service: string;
+      website: string;
+      gallery_image_url: string;
     }
 
     const item = ref<info>({
@@ -178,6 +223,12 @@ export default defineComponent({
       responsible_phone: "",
       responsible_email: "",
       is_publish: 1,
+      expertise: "",
+      about: "",
+      location: "",
+      service: "",
+      website: "",
+      gallery_image_url: "",
     });
     const selectOptions = ref<any>({
       campus: [],
@@ -195,6 +246,12 @@ export default defineComponent({
       responsible_staff: yup.string().nullable(),
       responsible_phone: yup.string().nullable(),
       responsible_email: yup.string().nullable(),
+      expertise: yup.string().nullable(),
+      about: yup.string().nullable(),
+      location: yup.string().nullable(),
+      service: yup.string().nullable(),
+      website: yup.string().nullable(),
+      gallery_image_url: yup.string().nullable(),
     });
 
     // Fetch
