@@ -405,7 +405,7 @@ export default defineComponent({
 
     const fetchAdministrator = () => {
       ApiService.query("administrator/", {
-        params: { center_id: route.params.id },
+        params: { center_id: route.params.id, perPage: 30 },
       })
         .then(({ data }) => {
           if (data.msg != "success") {
