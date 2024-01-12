@@ -29,7 +29,7 @@
 
             <div class="col-lg-12" v-for="(c, idx) in column" :key="idx">
               <span class="fw-bold text-dark">{{ c.columnLabel }} : </span>
-              <span class="text-primary fw-bold">
+              <!-- <span class="text-primary fw-bold">
                 {{
                   c.type == "relation1"
                     ? item[c.columnName.split(".")[0]][
@@ -41,7 +41,20 @@
                       ][c.columnName.split(".")[2]]
                     : item[c.columnName]
                 }}
-              </span>
+              </span> -->
+              <span
+                v-html="
+                  c.type == 'relation1'
+                    ? item[c.columnName.split('.')[0]][
+                        c.columnName.split('.')[1]
+                      ]
+                    : c.type == 'relation2'
+                    ? item[c.columnName.split('.')[0]][
+                        c.columnName.split('.')[1]
+                      ][c.columnName.split('.')[2]]
+                    : item[c.columnName]
+                "
+              ></span>
               <div class="separator my-5"></div>
             </div>
 
@@ -299,7 +312,6 @@ export default defineComponent({
         type: null,
       },
 
-
       {
         columnName: "gallery_image_url",
         columnLabel: "รูปเครื่องมือหรือรูปที่เกี่ยวข้องศูนย์ปฏิบัติการ",
@@ -405,7 +417,7 @@ export default defineComponent({
           console.log(response);
         });
     };
-    
+
     // Event
     const onConfirmDelete = async (id: number) => {
       Swal.fire({
