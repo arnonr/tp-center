@@ -58,6 +58,7 @@
                   v-if="c.type == 'textarea'"
                   type="text"
                   class="form-control"
+                  rows="10" 
                   :placeholder="c.columnLabel"
                   v-model="item[c.columnName]"
                   :name="c.columnName"
