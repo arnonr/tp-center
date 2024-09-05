@@ -20,7 +20,6 @@
       <div class="mb-10 bg-light-info p-8 rounded">
         <div class="text-info">
           ระบบบริหารจัดการศูนย์วิจัยฯ ภายใต้อุทยานเทคโนโลยี มจพ.
-          
         </div>
       </div>
 
@@ -106,7 +105,7 @@
           </span>
         </button>
         <!--end::Submit button-->
-        <span>พบปัญหาการเข้าใช้งานระบบติดต่อ 2272</span>
+        <!-- <span>พบปัญหาการเข้าใช้งานระบบติดต่อ 2272</span> -->
       </div>
       <!--end::Actions-->
     </VForm>
